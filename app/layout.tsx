@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
+
+const roboto = Roboto({
+  // variable: "latun",
+  subsets: ["latin"],
+  weight: ['400', '700']
+});
 
 
 const geistMono = Geist_Mono({
@@ -26,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={` ${geistMono.variable} antialiased`}
+        className={` ${roboto.className} antialiased`}
       >
         {children}
       </body>
