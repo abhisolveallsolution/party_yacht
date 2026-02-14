@@ -4,12 +4,15 @@ import Image from "next/image"
 import HeaderText from "./Header/HeaderText"
 import Guest from "./Header/Guest/Guest"
 import { FaAngleRight } from "react-icons/fa6"
+import Calender_Compo from "./Header/Calender/Calender_Compo"
 
 export default function Homeloggout() {
   const [state, setState] = useState({
     count: 0,
   })
-
+  const handleUpdateComp = () => {
+    setState((prev) => ({ ...prev, count: prev.count + 1 }))
+  }
   return (
     <div className="relative w-full min-h-screen overflow-hidden flex justify-center">
 
@@ -48,14 +51,14 @@ export default function Homeloggout() {
             className="
             mt-39
           sm:mt-39
-          opacity-90
+          opacity-84
     ring ring-gray-800
     shadow-lg
     bg-[#1c1f26]
     rounded-2xl
     h-100
     sm:h-110
-    md:h-119
+    md:h-129
     px-5
     sm:px-6
     py-6
@@ -63,17 +66,18 @@ export default function Homeloggout() {
    max-w-150
   "
           >
-            {/* Guest Section */}
-            <Guest />
+            {state.count != null && state.count === 0 && <Guest />}
+            {state.count != null && state.count === 1 && <Calender_Compo />}
 
-            {/* Continue Button */}
+
             <button
               type="button"
               className="
             ring ring-gray-800
     absolute
     bottom-13
-    right-111
+    right-1/2
+    sm:right-101
     -translate-x-1/2
     w-[90%]
     sm:w-auto
@@ -93,6 +97,7 @@ export default function Homeloggout() {
     rounded-full
     transition duration-300
   "
+              onClick={handleUpdateComp}
             >
               Continue <FaAngleRight />
             </button>

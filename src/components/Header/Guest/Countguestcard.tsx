@@ -32,12 +32,14 @@ export default function Countguestcard() {
   return (
     <div className='grid col-span-12'>
       <div className="
-  grid
-  sm:grid-cols-4 
-  grid-cols-4
-  gap-2 
-  sm:gap-3
-  md:gap-7 
+      mt-4
+      sm: mt-4
+      grid
+      sm:grid-cols-4 
+      grid-cols-4
+      gap-2 
+      sm:gap-3
+      md:gap-4 
    
 ">
         {countguest.map((item, index) => {
