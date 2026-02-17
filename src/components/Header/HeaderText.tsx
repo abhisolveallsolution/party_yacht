@@ -17,33 +17,31 @@ export default function HeaderText({ title, desc }: { title: string, desc: strin
         <FaAnchor
           className="
         text-yellow-400
-        text-xl 
-        sm:text-2xl 
+        text-2xl
+        sm:text-[18px] 
         md:text-3xl 
         lg:text-4xl
       "
         />
-
         <h1
           className="
-        uppercase 
-        text-white 
-        font-extralight 
-        text-xl 
-        sm:text-2xl 
-        md:text-4xl 
-        lg:text-5xl 
-        tracking-[3px] 
-        sm:tracking-[5px] 
-        md:tracking-[6px] 
-        lg:tracking-[8px]
-        text-center
-      "
+    uppercase
+    text-white
+    font-extralight
+    text-xl
+    sm:text-[14px]
+    md:text-2xl
+    lg:text-4xl
+    tracking-[2px]
+    sm:tracking-[4px]
+    md:tracking-[6px]
+    leading-tight
+    text-center
+  "
         >
           {title}
         </h1>
       </div>
-
       <p
         className="
       text-gray-300 

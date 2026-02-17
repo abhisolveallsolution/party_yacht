@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 
-export default function Countguestcard() {
+export default function Countguestcard({ setState }: any) {
   const countguest = [
     {
       id: 1,
@@ -29,6 +29,15 @@ export default function Countguestcard() {
       value: 65
     }
   ]
+  const handleGuestClick = (item: any) => {
+    const { id, value } = item;
+
+    console.log("guest count no:", value);
+    setState((prev: any) => ({
+      ...prev,
+      guest: value
+    }))
+  }
   return (
     <div className='grid col-span-12'>
       <div className="
@@ -59,7 +68,7 @@ export default function Countguestcard() {
           w-full h-13
           gap-1
           sm:w-full sm:h-16 
-          md:w-full md:h-15 
+          md:w-full md:h-14 
           flex 
           items-center 
           justify-center 
@@ -69,7 +78,7 @@ export default function Countguestcard() {
           duration-300
         "
             >
-              <span>{item.value}+</span>
+              <span onClick={() => handleGuestClick(item)}>{item.value}+</span>
             </div>
           )
         })}
