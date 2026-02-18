@@ -43,7 +43,7 @@ export default function LabelComponuts({ date, guest }: LabelProps) {
 
         <div className="flex items-center gap-2 border border-gray-700 rounded-2xl px-3 py-2">
           <CiFilter />
-          <span className="text-gray-400 font-bold text-md">
+          <span className="text-gray-400 font-bold text-md cursor-pointer" >
             Advance Filter
           </span>
         </div>
@@ -52,11 +52,10 @@ export default function LabelComponuts({ date, guest }: LabelProps) {
       {/* Right button */}
       <div className="flex items-center gap-2 rounded-2xl px-3 py-2">
         <MdFormatListBulletedAdd className="text-[#aa915c]" />
-        <span className="text-[#aa915c] font-bold text-md">
+        <span className="text-[#aa915c] font-bold text-md cursor-pointer">
           Change Filter
         </span>
       </div>
-
     </div>
 
   )

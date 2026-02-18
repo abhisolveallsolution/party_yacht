@@ -1,14 +1,22 @@
-"use client"
-import React from "react"
-import GuestSection from "./GuestSection"
-import Countguestcard from "./Countguestcard"
+"use client";
+import React from "react";
+import GuestSection from "./GuestSection";
+import Countguestcard from "./Countguestcard";
 import { FaAngleRight } from "react-icons/fa6";
-
-export default function Guest({ handleUpdateComp, setState }: any) {
-
+interface GuestInterface {
+  handleUpdateComp: () => void;
+  setState: any;
+  guest: number;
+}
+export default function Guest({
+  handleUpdateComp,
+  setState,
+  guest,
+}: GuestInterface) {
   return (
     <>
-      <div className={`
+      <div
+        className={`
           mt-29 sm:mt-38  lg:mt-40
           opacity-84
           ring ring-gray-800
@@ -26,13 +34,14 @@ export default function Guest({ handleUpdateComp, setState }: any) {
           px-5 sm:px-6
           py-6
       
-          flex flex-col`}>
+          flex flex-col`}
+      >
         <GuestSection
           title="How Many Guests"
           desc="Select the number of passengers for your voyage."
         />
         <div className="mt-6">
-          <Countguestcard setState={setState} />
+          <Countguestcard setState={setState} guest={guest} />
         </div>
         <div className="flex justify-end items-center w-full h-22 mt-4">
           <button
@@ -55,7 +64,5 @@ export default function Guest({ handleUpdateComp, setState }: any) {
         </div>
       </div>
     </>
-
-  )
+  );
 }
-//   sm:max-w-lg

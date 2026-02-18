@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { DateCalendarValue } from "./DateCalendarValue";
 import { FaAngleRight } from "react-icons/fa6";
@@ -9,28 +8,20 @@ import CalenderHeader from "./CalenderHeader";
 import { LuCalendarDays } from "react-icons/lu";
 
 type Props = {
-  setState: any;
-  tab: any;
+  tab: number;
   handleBackUpdate: () => void;
   handleNextUpdate: () => void;
+  handleDateChange: (newDate: string) => void;
 };
 
 export default function Calender_Compo({
   handleBackUpdate,
   handleNextUpdate,
-  setState,
+  handleDateChange,
   tab,
 }: Props) {
 
-  // const [value, setValue] = useState<Dayjs | null>(dayjs());
 
-  // whenever user changes date → update parent
-  // useEffect(() => {
-  //   setState((prev: any) => ({
-  //     ...prev,
-  //     date: value?.format("YYYY-MM-DD"),
-  //   }));
-  // }, [value, setState]);
 
   return (
     <>
@@ -56,11 +47,14 @@ export default function Calender_Compo({
 
         <div className='text-white mb-4 flex flex-col justify-center items-center text-center '>
           <LuCalendarDays className='text-6xl text-yellow-400 border border-amber-300  rounded-2xl  px-3 py-3' />
-          <CalenderHeader />
+          <CalenderHeader
+            title={"Choose Your Date"}
+            desc={"When would you like to set sail?"}
+          />
         </div>
         <div className=" flex justify-center items-center h-66 ">
           <DateCalendarValue
-            setState={setState}
+            handleDateChange={handleDateChange}
           />
         </div>
         <div
@@ -121,9 +115,7 @@ export default function Calender_Compo({
             Continue <FaAngleRight />
           </button>
         </div>
-
       </div>
-
     </>
   );
 }

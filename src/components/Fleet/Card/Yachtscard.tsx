@@ -4,14 +4,18 @@ import Image from "next/image";
 import { FiUsers } from "react-icons/fi";
 import { GiThermometerScale } from "react-icons/gi";
 import { CiLocationOn } from "react-icons/ci";
-
-export default function Yachtscard() {
-  const arr = [1, 2, 3];
+import { Skeleton } from "@/components/ui/skeleton"
+interface YachtscardInterface {
+  handleCardModelOpen: () => void,
+}
+export default function Yachtscard({ handleCardModelOpen }: YachtscardInterface) {
+  const [state, setState] = useState({
+    url: "/banner/banner3.jpg"
+  })
   return (
     <div>
       <div className="w-full px-4">
-        <div className="grid grid-cols-1 cursor-pointer sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
+        <div className="grid grid-cols-1 cursor-pointer sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-4">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
             <div
               key={index}
@@ -26,14 +30,18 @@ export default function Yachtscard() {
         "
             >
               {/* Image */}
-              <Image
-                src="/banner/banner3.jpg"
-                width={500}
-                height={300}
-                alt="banner img"
-                className="w-full h-56 object-cover"
-              />
+              {!state.url ?
 
+                <Skeleton className="h-55 w-full" />
+                :
+                <Image
+                  src={state.url}
+                  width={500}
+                  height={300}
+                  alt="banner img"
+                  className="w-full h-56 object-cover"
+                />
+              }
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
@@ -43,7 +51,6 @@ export default function Yachtscard() {
                   AED 1,000/hr
                 </span>
               </div>
-
               {/* Info overlay */}
               <div className="absolute top-40 left-4 z-10 text-white">
                 <h2 className="text-lg font-bold">50 Pax - 70ft</h2>
@@ -60,33 +67,33 @@ export default function Yachtscard() {
                   </span>
                 </div>
               </div>
-
               {/* Content */}
               <div className="p-4 text-gray-300 flex flex-col flex-1">
                 <p className="text-sm mb-3">
                   Mega yacht for corporate events and large parties
                 </p>
-
                 <div className="mt-auto flex justify-between items-end">
                   <div>
                     <p className="text-sm">Starting from</p>
-                    <h1 className="text-[#c8a75b] text-2xl font-semibold">
-                      AED 1,000
-                    </h1>
-                    <span className="text-xs">+5% VAT</span>
+                    <div className="flex items-center gap-3 mt-2">
+                      <h1 className="text-[#c8a75b] text-2xl font-semibold">
+                        AED 1,000
+                      </h1>
+                      <span className="text-xs text-gray-400">+5% VAT</span>
+                    </div>
                   </div>
-
-                  <button className="bg-black ring ring-gray-700 rounded-xl px-4 py-2 text-white text-sm">
+                  <button
+                    type="button"
+                    onClick={handleCardModelOpen}
+                    className="bg-black ring cursor-pointer ring-gray-700 rounded-xl px-4 py-2 text-white text-sm">
                     Book Now
                   </button>
                 </div>
               </div>
             </div>
           ))}
-
         </div>
       </div>
-
     </div >
   )
 }

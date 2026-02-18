@@ -1,21 +1,31 @@
-"use client"
+"use client";
+import React from "react";
+import { Calendar } from "@/components/ui/calendar";
+import dayjs from "dayjs";
+type BookingState = {
+  handleDateChange: (newDate: string) => void;
+};
 
-import React, { useEffect } from "react"
-import { Calendar } from "@/components/ui/calendar"
 
-export function DateCalendarValue({ setState }: any) {
-  const [date, setDate] = React.useState<Date | undefined>(new Date())
-  useEffect(() => {
-    setState((prev: any) => ({
-      ...prev,
-      date: date ? date.toISOString().split('T')[0] : undefined,
-    }));
-    console.log("Selected date:", date)
-  }, [date, setState])
+
+export function DateCalendarValue({ handleDateChange }: BookingState) {
+
+  const handleSelect = (value: Date | undefined) => {
+    if (value) {
+      const formatted: any = dayjs(value).format("YYYY-MM-DD");
+      handleDateChange(formatted);
+    }
+    // console.log("selected date:", value);
+  };
+
+
   return (
     <Calendar
-      onSelect={setDate}
+      mode="single"
+      onSelect={handleSelect}
       disabled={{ before: new Date() }}
-      mode="single" className="rounded-lg w-66   ring ring-gray-600 bg-[#1d2228] text-white" />
-  )
+      className="rounded-lg ring ring-gray-600 bg-[#1d2228] text-white"
+    />
+
+  );
 }

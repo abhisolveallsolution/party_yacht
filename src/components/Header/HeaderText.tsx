@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import { FaAnchor } from "react-icons/fa";
+import { LuAnchor } from "react-icons/lu";
 
 export default function HeaderText({ title, desc }: { title: string, desc: string }) {
   return (
@@ -14,7 +15,7 @@ export default function HeaderText({ title, desc }: { title: string, desc: strin
   px-4
 ">
       <div className="flex gap-2 sm:gap-3 items-center justify-center">
-        <FaAnchor
+        <LuAnchor
           className="
         text-yellow-400
         text-2xl
@@ -42,6 +43,7 @@ export default function HeaderText({ title, desc }: { title: string, desc: strin
           {title}
         </h1>
       </div>
+
       <p
         className="
       text-gray-300 
