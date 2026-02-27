@@ -116,8 +116,9 @@ export default function YachtCardPopups({ handleCardModelClose, IoCloseOutline }
               text-white
               text-sm
               font-medium
-              hover:bg-blue-700
+              hover:bg-gray-700
               transition
+              cursor-pointer
             "
             >
               Confirm Booking

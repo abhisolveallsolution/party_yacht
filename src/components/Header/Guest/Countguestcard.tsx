@@ -8,6 +8,9 @@ interface Countguestcardinterface {
   guest: number
 }
 export default function Countguestcard({ setState, guest }: Countguestcardinterface) {
+
+
+
   const countguest = [
     {
       id: 1,
@@ -38,14 +41,13 @@ export default function Countguestcard({ setState, guest }: Countguestcardinterf
   const handleGuestClick = (item: any) => {
     const { id, value } = item;
 
-    console.log("guest count no:", value);
     setState((prev: any) => ({
       ...prev,
       guest: value
     }))
   }
   useEffect(() => {
-    console.log("guest updated value:--", guest);
+    // console.log("guest updated value:--", guest);
   }, [])
   return (
     <div className='grid col-span-12'>

@@ -23,17 +23,13 @@ export default function Guest({
           shadow-lg
           bg-[#1c1f26]
           rounded-2xl
-      
           w-145
           max-w-2xl
           mx-auto
-            
           min-h-[400px]
           sm:min-h-[400px]
-      
           px-5 sm:px-6
           py-6
-      
           flex flex-col`}
       >
         <GuestSection

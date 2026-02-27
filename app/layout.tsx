@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-
+import { AuthProvider } from "../contexts/AuthContext";
 
 const roboto = Roboto({
   // variable: "latun",
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo/logo.png"
   },
+
 };
 
 export default function RootLayout({
@@ -35,7 +36,9 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={` ${roboto.className} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

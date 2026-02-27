@@ -5,9 +5,12 @@ import HeaderText from "./Header/HeaderText";
 import Guest from "./Header/Guest/Guest";
 import Calender_Compo from "./Header/Calender/Calender_Compo";
 import { useRouter, useSearchParams } from "next/navigation";
-
+import { useAuth } from '../../contexts/AuthContext';
 import dayjs, { Dayjs } from "dayjs";
+import Departuretime from "./Header/Departuretime/Departuretime";
 export default function Homeloggout() {
+  const { loading } = useAuth();
+  console.log("loading", loading);
   const [state, setState] = useState({
     guest: 0,
     date: ""
@@ -33,11 +36,15 @@ export default function Homeloggout() {
     params.set("tab", "1");
     router.push(`?${params.toString()}`);
   };
+  const handleUpdateCompNext = () => {
+    params.set("tab", "2");
+    router.push(`?${params.toString()}`);
+  };
   const handleBackUpdate = () => {
     params.set("tab", "0");
     router.push(`?${params.toString()}`);
   }
-  if (tab === 2) {
+  if (tab === 3) {
     router.push(
       `/fleet?guest=${state.guest}&date=${dayjs(state.date).format("YYYY-MM-DD")}`
     );
@@ -81,7 +88,6 @@ export default function Homeloggout() {
           </div>
           <div className="absolute inset-0 flex items-center justify-center px-4 z-40">
             <div
-
             >
 
               {/* Components based on tab */}
@@ -96,10 +102,19 @@ export default function Homeloggout() {
               {tab === 1 && (
                 <Calender_Compo
                   tab={tab}
-                  setState={setState}
                   handleBackUpdate={handleBackUpdate}
                   handleDateChange={handleDateChange}
                   handleNextUpdate={handleNextUpdate}
+                />
+              )} {tab === 2 && (
+                <Departuretime
+                  guest={state.guest}
+                  setState={setState}
+                  tab={tab}
+                  handleBackUpdate={handleBackUpdate}
+                  handleDateChange={handleDateChange}
+                  handleNextUpdate={handleNextUpdate}
+                  handleUpdateCompNext={handleUpdateCompNext}
                 />
               )}
             </div>
