@@ -5,7 +5,6 @@ import Countguestcard from "./Countguestcard";
 import { FaAngleRight } from "react-icons/fa6";
 interface GuestInterface {
   handleUpdateComp: () => void;
-  tab: any;
   setState: any;
   guest: number;
 }
@@ -13,7 +12,6 @@ export default function Guest({
   handleUpdateComp,
   setState,
   guest,
-  tab,
 }: GuestInterface) {
   return (
     <>
