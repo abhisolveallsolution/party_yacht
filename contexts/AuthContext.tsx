@@ -16,7 +16,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState(null);
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
-  const [role, setRole] = useState(null);
   // const [loading, setLoading] = useState(true);
   const [loading, setLoading] = useState({
     spinner: "loading..."
@@ -61,4 +60,5 @@ export function useAuth() {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
+
 }
