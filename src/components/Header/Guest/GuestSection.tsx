@@ -6,7 +6,7 @@ export default function GuestSection({ title, desc }: { title: string, desc: str
   return (
     <div >
       <div className='text-white mb-4 flex flex-col justify-center items-center text-center'>
-        <FiUsers className='text-7xl text-yellow-400 border border-amber-300  rounded-2xl  px-3 py-3' />
+        <FiUsers className='text-6xl text-yellow-400 border border-amber-300  rounded-2xl  px-3 py-3' />
         <div className='mt-6'>
           <h1 className='text-lg sm:text-3xl 
             '>{title}?</h1>

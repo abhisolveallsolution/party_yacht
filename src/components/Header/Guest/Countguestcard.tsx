@@ -1,7 +1,16 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
+interface BookingState {
+  guest: number
+}
+interface Countguestcardinterface {
+  setState: React.Dispatch<React.SetStateAction<BookingState>>;
+  guest: number
+}
+export default function Countguestcard({ setState, guest }: Countguestcardinterface) {
 
-export default function Countguestcard() {
+
+
   const countguest = [
     {
       id: 1,
@@ -29,25 +38,36 @@ export default function Countguestcard() {
       value: 65
     }
   ]
+  const handleGuestClick = (item: any) => {
+    const { id, value } = item;
+
+    setState((prev: any) => ({
+      ...prev,
+      guest: value
+    }))
+  }
+  useEffect(() => {
+    // console.log("guest updated value:--", guest);
+  }, [])
   return (
     <div className='grid col-span-12'>
       <div className="
       mt-4
       sm: mt-4
       grid
-      sm:grid-cols-4 
-      grid-cols-4
+      sm:grid-cols-5 
+      grid-cols-5
       gap-2 
-      sm:gap-3
-      md:gap-4 
+      sm:gap-5
+      md:gap-5 
    
 ">
         {countguest.map((item, index) => {
           return (
             <div
               key={index}
-              className="
-              bg-[#30363e]
+              className={`
+              ${guest == item.value ? null : "bg-[#30363e]"}
           text-gray-400
           text-md
           sm:text-xl 
@@ -59,17 +79,16 @@ export default function Countguestcard() {
           w-full h-13
           gap-1
           sm:w-full sm:h-16 
-          md:w-full md:h-15 
+          md:w-full md:h-14 
           flex 
           items-center 
           justify-center 
           cursor-pointer 
           hover:bg-[#22252d] 
           transition 
-          duration-300
-        "
+          duration-300`}
             >
-              <span>{item.value}+</span>
+              <span onClick={() => handleGuestClick(item)}>{item.value}+</span>
             </div>
           )
         })}
